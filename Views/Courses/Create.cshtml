@@ -1,0 +1,55 @@
+﻿@model ElearningMVC.Models.Course
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Course</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Create",
+        "Courses",
+        FormMethod.Post,
+        new { enctype = "multipart/form-data" }))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherJoinClassId" class="control-label"></label>
+                <input asp-for="TeacherJoinClassId" class="form-control" />
+                <span asp-validation-for="TeacherJoinClassId" class="text-danger"></span>
+            </div>
+            <label for="file">Upload File:</label>
+            <input type="file" name="file" id="file" />
+            <br>
+            <br>
+            <input type="submit" value="Create" />
+            <br>
+            <br>
+            @ViewBag.Message
+        }
+        <form asp-action="Create">
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
